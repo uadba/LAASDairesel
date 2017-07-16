@@ -317,7 +317,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
         crosshairOverlay.addDomainCrosshair(xCrosshair);
         crosshairOverlay.addRangeCrosshair(yCrosshair);
 		
-		grafik.getXYPlot().getDomainAxis().setRange(0, 180); // x axis
+		grafik.getXYPlot().getDomainAxis().setRange(0, 360); // x axis
 		grafik.getXYPlot().getRangeAxis().setRange(arrayFactorAxisMinValue, 5);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
