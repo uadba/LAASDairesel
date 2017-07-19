@@ -55,7 +55,7 @@ public class AntennaArray {
 		for (int i = 0; i < numberofElements; i++) {
 			amplitude[i] = DefaultConfiguration.amplitudeValue;
 			phase[i] = DefaultConfiguration.phaseValue;
-			angular_position[i] = i*DefaultConfiguration.positionValue*lambda;
+			angular_position[i] = 2*Math.PI*((double) (i+1) / (double) numberofElements); //i*DefaultConfiguration.positionValue*lambda;
 		}
 	}
 
@@ -69,8 +69,8 @@ public class AntennaArray {
 		{
 //			result_real = result_real + amplitude[e]*Math.cos(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
 //			result_img = result_img + amplitude[e]*Math.sin(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
-			result_real = result_real + amplitude[e]*r*Math.cos(beta*Math.cos((theta - angular_position[e])/180*Math.PI) + ((phase[e])/180*Math.PI));
-			result_img = result_img + amplitude[e]*Math.sin(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));			
+			result_real = result_real + amplitude[e]*Math.cos(beta*r*Math.cos((theta - angular_position[e])/180*Math.PI) + ((phase[e])/180*Math.PI));
+			result_img = result_img + amplitude[e]*Math.sin(beta*r*Math.cos((theta - angular_position[e])/180*Math.PI) + ((phase[e])/180*Math.PI));			
 
 		}
 		result = Math.sqrt(result_real*result_real + result_img*result_img);
