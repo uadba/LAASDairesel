@@ -64,6 +64,7 @@ public class AntennaArray {
 		double result = 0;
 		double result_real = 0;
 		double result_img = 0;
+		double r = 2; // daire dizisi yaricapi
 		for (int e = 0; e<numberofElements; e++)
 		{
 			result_real = result_real + amplitude[e]*Math.cos(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
