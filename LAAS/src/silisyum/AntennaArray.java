@@ -67,8 +67,11 @@ public class AntennaArray {
 		double r = 2; // daire dizisi yaricapi
 		for (int e = 0; e<numberofElements; e++)
 		{
+//			result_real = result_real + amplitude[e]*Math.cos(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
+//			result_img = result_img + amplitude[e]*Math.sin(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
 			result_real = result_real + amplitude[e]*Math.cos(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
 			result_img = result_img + amplitude[e]*Math.sin(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));			
+
 		}
 		result = Math.sqrt(result_real*result_real + result_img*result_img);
 					
