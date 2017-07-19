@@ -103,7 +103,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 	private ChartPanel chartPanelPattern;
 	private ChartPanel chartPanelConvergence;
     private Crosshair xCrosshair;
-    private Crosshair yCrosshair;    
+    private Crosshair yCrosshair;
     
     private int numberOfElements = DefaultConfiguration.numberofElements;
     private int problemDimension;
@@ -764,7 +764,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		btnResetDistancesTo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int d = 0; d < numberOfElements ; d++) {
-					antennaArray.position[d] = d*0.5;
+					antennaArray.angular_position[d] = d*0.5;
 				}
 				refreshPositionTable();
 				drawPlotWithInitialParameterValues();
@@ -898,11 +898,11 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		        	List<String> lines = null;
 		            File file = fc.getSelectedFile();
 		            Path path = Paths.get(file.getAbsolutePath());
-		            int loopLength = antennaArray.position.length;
+		            int loopLength = antennaArray.angular_position.length;
 					try {
 						lines = Files.readAllLines(path, StandardCharsets.UTF_8);						
-						if(lines.size() < antennaArray.position.length) {
-							int difference = antennaArray.position.length - lines.size();
+						if(lines.size() < antennaArray.angular_position.length) {
+							int difference = antennaArray.angular_position.length - lines.size();
 							for(int addition = 0; addition < difference; addition++)
 							{
 								lines.add("0");
@@ -917,7 +917,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 								positionFromFile = 0;
 							}				
 							
-							antennaArray.position[conversion] = positionFromFile;							
+							antennaArray.angular_position[conversion] = positionFromFile;							
 						}
 						refreshPositionTable();
 						drawPlotWithInitialParameterValues();						
@@ -1238,7 +1238,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 					cc.positionIsUsed = positionIsUsed;
 					cc.amplitudeValues = antennaArray.amplitude;
 					cc.phaseValues = antennaArray.phase;
-					cc.positionValues = antennaArray.position;
+					cc.positionValues = antennaArray.angular_position;
 					
 					// For Outer Mask
 					int numberOfOuterMask = mask.outerMaskSegments.size();
@@ -1350,7 +1350,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 						for(int s=0; s<cc.amplitudeValues.length; s++) {
 							antennaArray.amplitude[s] = cc.amplitudeValues[s];
 							antennaArray.phase[s] = cc.phaseValues[s];
-							antennaArray.position[s] = cc.positionValues[s];
+							antennaArray.angular_position[s] = cc.positionValues[s];
 						}
 						
 						refreshForChckbxAmplitude();
@@ -1668,9 +1668,9 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		
 		if (positionIsUsed) {
 			// this is for positions. It starts with 1 instead of 0
-			antennaArrayForPresentation.position[0] = 0;
+			antennaArrayForPresentation.angular_position[0] = 0;
 			for (int index = 1; index < numberOfElements; index++) {
-				antennaArray.position[index] = antennaArrayForPresentation.position[index - 1] + 0.5 + bestValues.valuesOfBestMember[index + delta];
+				antennaArray.angular_position[index] = antennaArrayForPresentation.angular_position[index - 1] + 0.5 + bestValues.valuesOfBestMember[index + delta];
 			}
 		}		
 	}
@@ -1930,7 +1930,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 	
 	    public int getRowCount() {
 	    	int length = 0;
-	    	if (antennaArray != null) length = antennaArray.position.length;
+	    	if (antennaArray != null) length = antennaArray.angular_position.length;
 	    	if (chckbxPosition.isSelected()) length = 0;
 	    	return length;
 	    }
@@ -1944,7 +1944,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 	    	double returnedValue = 0;
 
 			if(col == 0) returnedValue = row;
-			if(col == 1) returnedValue = antennaArray.position[row];
+			if(col == 1) returnedValue = antennaArray.angular_position[row];
 			
 			return returnedValue;
 	    }
@@ -1962,7 +1962,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 	    }
 	    public void setValueAt(Object value, int row, int col) {
 
-			if(col == 1) antennaArray.position[row] = (double) value;
+			if(col == 1) antennaArray.angular_position[row] = (double) value;
 	    	
 	        fireTableCellUpdated(row, col);
 	        drawPlotWithInitialParameterValues();
@@ -2380,13 +2380,13 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		
 		if (positionIsUsed) {
 			// this is for positions. It starts with 1 instead of 0
-			antennaArrayForPresentation.position[0] = 0;
+			antennaArrayForPresentation.angular_position[0] = 0;
 			for (int index = 1; index < numberOfElements; index++) {
-				antennaArrayForPresentation.position[index] = antennaArrayForPresentation.position[index - 1] + 0.5 + bestValues.valuesOfBestMember[index + delta];
+				antennaArrayForPresentation.angular_position[index] = antennaArrayForPresentation.angular_position[index - 1] + 0.5 + bestValues.valuesOfBestMember[index + delta];
 			}
 		} else {
 			for (int index = 1; index < numberOfElements; index++) {
-				antennaArrayForPresentation.position[index] = antennaArray.position[index];
+				antennaArrayForPresentation.angular_position[index] = antennaArray.angular_position[index];
 			}
 		}
 		
@@ -2616,7 +2616,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 			}
 		} else {
 			for (int index = 1; index < numberOfElements; index++) {
-				currentResults += Double.toString(antennaArray.position[index]);
+				currentResults += Double.toString(antennaArray.angular_position[index]);
 				currentResults += "<br>";
 			}
 		}

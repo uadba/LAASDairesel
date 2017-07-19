@@ -6,7 +6,7 @@ public class AntennaArray {
 	double beta = 2*Math.PI/lambda;
 	int numberofElements;
 	public double[] amplitude;
-	public double[] position;
+	public double[] angular_position;
 	public double[] phase;
 	public int numberofSamplePoints;
 	public double[] angle;
@@ -40,7 +40,7 @@ public class AntennaArray {
 
 	public void createArrays() {
 		amplitude = new double[numberofElements];
-		position = new double[numberofElements];
+		angular_position = new double[numberofElements];
 		phase = new double[numberofElements];
 		createAnlgeAndPatternArrays();
 	}
@@ -55,7 +55,7 @@ public class AntennaArray {
 		for (int i = 0; i < numberofElements; i++) {
 			amplitude[i] = DefaultConfiguration.amplitudeValue;
 			phase[i] = DefaultConfiguration.phaseValue;
-			position[i] = i*DefaultConfiguration.positionValue*lambda;
+			angular_position[i] = i*DefaultConfiguration.positionValue*lambda;
 		}
 	}
 
@@ -66,8 +66,8 @@ public class AntennaArray {
 		double result_img = 0;
 		for (int e = 0; e<numberofElements; e++)
 		{
-			result_real = result_real + amplitude[e]*Math.cos(position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
-			result_img = result_img + amplitude[e]*Math.sin(position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));			
+			result_real = result_real + amplitude[e]*Math.cos(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
+			result_img = result_img + amplitude[e]*Math.sin(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));			
 		}
 		result = Math.sqrt(result_real*result_real + result_img*result_img);
 					

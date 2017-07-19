@@ -46,9 +46,9 @@ public class Cost {
 		
 		if (positionIsUsed) {
 			// this is for positions. It starts with 1 instead of 0
-			aA.position[0] = 0;
+			aA.angular_position[0] = 0;
 			for (int index = 1; index < numberofElements; index++) {
-				aA.position[index] = aA.position[index - 1] + 0.5 + theVector[index + delta];
+				aA.angular_position[index] = aA.angular_position[index - 1] + 0.5 + theVector[index + delta];
 			} 
 		}
 		
