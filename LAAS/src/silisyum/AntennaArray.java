@@ -54,8 +54,8 @@ public class AntennaArray {
 	public void initializeArrays() {
 		for (int i = 0; i < numberofElements; i++) {
 			amplitude[i] = DefaultConfiguration.amplitudeValue;
+			angular_position[i] = 360*((double) (i+1) / (double) numberofElements); //i*DefaultConfiguration.positionValue*lambda;
 			phase[i] = DefaultConfiguration.phaseValue;
-			angular_position[i] = 2*Math.PI*((double) (i+1) / (double) numberofElements); //i*DefaultConfiguration.positionValue*lambda;
 		}
 	}
 
