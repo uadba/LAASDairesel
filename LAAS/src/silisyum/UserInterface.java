@@ -223,7 +223,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 	private JButton btnResetAmplitudeValues;
 	private JButton btnResetPhaseValues;
 	private JButton btnResetDistancesTo;
-	private final double arrayFactorAxisMinValueDefault = -100;
+	private final double arrayFactorAxisMinValueDefault = -60;
 	private double arrayFactorAxisMinValue = arrayFactorAxisMinValueDefault;
 	private JSeparator separator;
 	private JProgressBar progressBar;
