@@ -116,11 +116,11 @@ public class AntennaArray {
 			createAnlgeAndPatternArrays();
 		}			
 		
-		angle[0] = 0;
+		angle[0] = -180;
 		double biggestOne = patternFunction(angle[0]);
 		pattern[0] = patternFunction(angle[0]);
 		for (int i = 1; i < numberofSamplePoints; i++) {
-			angle[i] = 360*((double)i/(numberofSamplePoints-1));
+			angle[i] = -180 + 360*((double)i/(numberofSamplePoints-1));
 			pattern[i] = patternFunction(angle[i]);
 			if(pattern[i]>biggestOne) biggestOne = pattern[i];
 		}

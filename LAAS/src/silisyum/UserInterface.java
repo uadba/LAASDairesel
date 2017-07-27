@@ -317,7 +317,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
         crosshairOverlay.addDomainCrosshair(xCrosshair);
         crosshairOverlay.addRangeCrosshair(yCrosshair);
 		
-		grafik.getXYPlot().getDomainAxis().setRange(0, 360); // x axis
+		grafik.getXYPlot().getDomainAxis().setRange(-180, 180); // x axis
 		grafik.getXYPlot().getRangeAxis().setRange(arrayFactorAxisMinValue, 5);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
@@ -361,7 +361,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		btnRescalePatternGraph = new JButton("Rescale Pattern Graph");
 		btnRescalePatternGraph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				grafik.getXYPlot().getDomainAxis().setRange(0, 360); // x axis
+				grafik.getXYPlot().getDomainAxis().setRange(-180, 180); // x axis
 				grafik.getXYPlot().getRangeAxis().setRange(arrayFactorAxisMinValue, 5);
 			}
 		});
@@ -388,7 +388,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		arrayFactorAxisMinValue_textField.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
-				grafik.getXYPlot().getDomainAxis().setRange(0, 360); // x axis
+				grafik.getXYPlot().getDomainAxis().setRange(-180, 180); // x axis
 				
 				try {
 					arrayFactorAxisMinValue = Double.parseDouble(arrayFactorAxisMinValue_textField.getText());
