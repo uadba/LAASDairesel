@@ -142,14 +142,14 @@ public class DialogBoxForEditingInnerMaskSegment extends JDialog {
 							JOptionPane.showMessageDialog(null, "Stop angle must be bigger than start angle.");
 						}
 						
-						if(startAngle < 0 || startAngle >= 180) {
+						if(startAngle < -180 || startAngle >= 180) {
 							noProblem = false;
-							JOptionPane.showMessageDialog(null, "Start angle must be in the range of [0, 180).");							
+							JOptionPane.showMessageDialog(null, "Start angle must be in the range of [-180, 180).");							
 						}
 						
-						if(stopAngle <= 0 || stopAngle > 180) {
+						if(stopAngle <= -180 || stopAngle > 180) {
 							noProblem = false;
-							JOptionPane.showMessageDialog(null, "Stop angle must be in the range of (0, 180].");							
+							JOptionPane.showMessageDialog(null, "Stop angle must be in the range of (-180, 180].");							
 						}
 						
 						if(numberOfPoints < 2) {
