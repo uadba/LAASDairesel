@@ -76,8 +76,8 @@ public class AntennaArray {
 //			result_real = result_real + amplitude[e]*Math.cos(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) - phase[e]));
 //			result_img = result_img + amplitude[e]*Math.sin(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) - phase[e]));			
 
-			result_real = result_real + amplitude[e]*Math.cos(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) + phase[e]));
-			result_img = result_img + amplitude[e]*Math.sin(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) + phase[e]));				
+			result_real = result_real + amplitude[e]*Math.cos(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) - phase[e]/180*Math.PI));
+			result_img = result_img + amplitude[e]*Math.sin(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) - phase[e]/180*Math.PI));				
 			
 		}
 		result = Math.sqrt(result_real*result_real + result_img*result_img);
