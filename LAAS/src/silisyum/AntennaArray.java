@@ -54,7 +54,8 @@ public class AntennaArray {
 	public void initializeArrays() {
 		for (int i = 0; i < numberofElements; i++) {
 			amplitude[i] = DefaultConfiguration.amplitudeValue;
-			phase[i] = DefaultConfiguration.phaseValue;
+//			phase[i] = DefaultConfiguration.phaseValue;
+			phase = new double[] {314.59, 45.14, 110.78, 7.37, 135.91, 295.22, 312.95, 196.25, 0, -196.25, -312.95, -295.22, -135.91, -7.37, -110.78, -45.14, -314.59, -35.60, -314.59, -45.14, -110.78, -7.37, -135.91, -295.22, -312.95, -196.25, 0, 196.25, 312.95, 295.22, 135.91, 7.37, 110.78, 45.14, 314.59, 35.60};
 			angular_position[i] = 360*((double) (i+1) / (double) numberofElements); //i*DefaultConfiguration.positionValue*lambda;
 		}
 	}
@@ -64,7 +65,7 @@ public class AntennaArray {
 		double result = 0;
 		double result_real = 0;
 		double result_img = 0;
-		double r = (numberofElements*0.25)/(2*Math.PI); // daire dizisi yaricapi
+		double r = (numberofElements*0.24)/(2*Math.PI); // daire dizisi yaricapi
 		for (int e = 0; e<numberofElements; e++)
 		{
 //			result_real = result_real + amplitude[e]*Math.cos(angular_position[e]*beta*Math.cos((theta)/180*Math.PI) + ((phase[e])/180*Math.PI));
@@ -76,8 +77,12 @@ public class AntennaArray {
 //			result_real = result_real + amplitude[e]*Math.cos(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) - phase[e]));
 //			result_img = result_img + amplitude[e]*Math.sin(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI) - phase[e]));			
 
-			result_real = result_real + amplitude[e]*Math.cos(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI)) + phase[e]/180*Math.PI);
-			result_img = result_img + amplitude[e]*Math.sin(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI)) + phase[e]/180*Math.PI);				
+// this works very well but we need to add the radius as a parameter that's why we comment this block		
+//			result_real = result_real + amplitude[e]*Math.cos(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI)) + phase[e]/180*Math.PI);
+//			result_img = result_img + amplitude[e]*Math.sin(beta*r*(Math.cos((theta - angular_position[e])/180*Math.PI)) + phase[e]/180*Math.PI);				
+
+			result_real = result_real + 1*Math.cos(beta*(r+amplitude[e])*(Math.cos((theta - angular_position[e])/180*Math.PI)) + phase[e]/180*Math.PI);
+			result_img = result_img + 1*Math.sin(beta*(r+amplitude[e])*(Math.cos((theta - angular_position[e])/180*Math.PI)) + phase[e]/180*Math.PI);				
 			
 		}
 		result = Math.sqrt(result_real*result_real + result_img*result_img);
