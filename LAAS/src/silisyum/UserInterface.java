@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -84,6 +85,7 @@ import java.awt.event.FocusEvent;
 import javax.swing.JSeparator;
 import javax.swing.JProgressBar;
 import java.awt.Component;
+
 import javax.swing.Box;
 import java.awt.Font;
 
@@ -253,6 +255,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -2146,15 +2149,15 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 					messagesOfErrors.add("Maximum amplitude value must be bigger than minimum amplitude value.");				
 				}
 				
-				if(Double.parseDouble(textField_maximumValueAmplitude.getText()) < 0) {
-					parametersAreValid = false;
-					messagesOfErrors.add("Maximum amplitude value cannot be negative.");				
-				}
-				
-				if(Double.parseDouble(textField_minimumValueAmplitude.getText()) < 0) {
-					parametersAreValid = false;
-					messagesOfErrors.add("Minimum amplitude value cannot be negative.");				
-				}
+//				if(Double.parseDouble(textField_maximumValueAmplitude.getText()) < 0) {
+//					parametersAreValid = false;
+//					messagesOfErrors.add("Maximum amplitude value cannot be negative.");				
+//				}
+//				
+//				if(Double.parseDouble(textField_minimumValueAmplitude.getText()) < 0) {
+//					parametersAreValid = false;
+//					messagesOfErrors.add("Minimum amplitude value cannot be negative.");				
+//				}
 			}
 		}
 		
