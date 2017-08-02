@@ -4,7 +4,7 @@ public class DefaultConfiguration
 {
 	// Antenna Parameters
 	public static int numberofElements = 36;
-	public static double[] L = {0, 0, -0.1}; // initial values of amplitude, phase, and position minimum limits
+	public static double[] L = {-0.1, 0, -0.1}; // initial values of amplitude, phase, and position minimum limits
 	public static double[] H = {0.1, 30, 0.1}; // initial values of amplitude, phase, and position maximum limits  
 	public static boolean amplitudeIsUsed = true;
 	public static boolean phaseIsUsed = false;
