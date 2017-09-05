@@ -301,7 +301,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		XYSeriesCollection veri_seti2 = new XYSeriesCollection(convergenceSeries);
 		veri_seti.addSeries(maskOuter);
 		veri_seti.addSeries(maskInner);
-		JFreeChart grafik = ChartFactory.createXYLineChart("Antenna Array Pattern", "Angle", "Array Factor (in dB)", veri_seti);
+		JFreeChart grafik = ChartFactory.createXYLineChart("Antenna Array Pattern", "Azimuth Angle (Phi)", "Array Factor (in dB)", veri_seti);
 		JFreeChart grafik2 = ChartFactory.createXYLineChart("Convergence Curve", "Iteration", "Cost", veri_seti2);
 				
 		XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) grafik.getXYPlot().getRenderer();
@@ -738,7 +738,7 @@ public class UserInterface extends JFrame implements ChartMouseListener{
 		btnResetAmplitudeValues.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int d = 0; d < numberOfElements ; d++) {
-					antennaArray.amplitude[d] = 1;
+					antennaArray.amplitude[d] = 0;
 				}
 				refreshAmplitudeTable();
 				drawPlotWithInitialParameterValues();
